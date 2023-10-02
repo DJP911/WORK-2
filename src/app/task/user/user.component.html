@@ -1,0 +1,79 @@
+<p-table
+  [value]="displaydataModel"
+  [lazy]="true"
+  (onLazyLoad)="loadData($event)"
+  [paginator]="true"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  [totalRecords]="totalRecords"
+  [tableStyle]="{ 'min-width': '50rem' }"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+  [rowsPerPageOptions]="[2, 3, 5, 10, 25, 50]"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="min-width: 15rem" pSortableColumn="userId">
+        <div class="flex align-items-centre">
+          <p-sortIcon field="userId"></p-sortIcon>
+          UserId
+        </div>
+      </th>
+      <th style="min-width: 15rem" pSortableColumn="firstName">
+        <div class="flex align-items-centre">
+          <p-sortIcon field="firstName"></p-sortIcon>
+          Name
+        </div>
+      </th>
+      <th style="min-width: 15rem" pSortableColumn="statusDisplay">
+        <div class="flex align-items-center">
+          <p-sortIcon field="statusDisplay"></p-sortIcon>
+          Status
+          <!-- <p-columnFilter type="text" field="status" display="menu"></p-columnFilter> -->
+        </div>
+      </th>
+      <th style="min-width: 15rem" pSortableColumn="email">
+        <div class="flex align-items-center">
+          <p-sortIcon field="email"></p-sortIcon>
+          Email
+          <!-- <p-columnFilter type="text" field="email" display="menu"></p-columnFilter> -->
+        </div>
+      </th>
+      <th style="min-width: 15rem" pSortableColumn="phone">
+        <div class="flex align-items-center">
+          <p-sortIcon field="phone"></p-sortIcon>
+          Phone
+          <!-- <p-columnFilter type="text" field="phone" display="menu"></p-columnFilter> -->
+        </div>
+      </th>
+      <th style="min-width: 15rem" pSortableColumn="balanceAmount">
+        <div class="flex align-items-center">
+          <p-sortIcon field="balanceAmount"></p-sortIcon>
+          Balance
+          <p-columnFilter type="text" field="balanceAmount" display="menu"></p-columnFilter>
+        </div>
+      </th>
+      <th style="min-width: 15rem" pSortableColumn="createdDate">
+        <div class="flex align-items-center">
+          <p-sortIcon field="createdDate"></p-sortIcon>
+          Registration Date
+          <!-- <p-columnFilter type="text" field="createdDate" display="menu"></p-columnFilter> -->
+        </div>
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-data>
+    <tr>
+      <td>{{ data.userId }}</td>
+      <td>{{ data.firstName }}</td>
+      <td>{{ data.statusDisplay }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.phone }}</td>
+      <td>{{ data.balanceAmount }}</td>
+      <td>{{ data.createdDate }}</td>
+    </tr>
+  </ng-template>
+</p-table>
+
+
+<button (click)="adddata()" class="btn btn-primary" >Add</button>
